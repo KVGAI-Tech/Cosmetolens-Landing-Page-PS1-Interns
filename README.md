@@ -1,86 +1,77 @@
-# Cosmetolens – Landing Page Redesign Project
+# Cosmetolens – Landing Page Redesign
 
-## Project Overview
+## Overview
 
-Cosmetolens is an AI-powered Skin Intelligence and Cosmetovigilance platform focused on helping users make better skincare decisions through personalized skin intelligence.
+This repository is part of the PS1 Internship Program.
 
-The objective of this project is to redesign the Cosmetolens landing page into a modern, engaging, responsive, and production-ready experience.
+The goal of this project is to redesign and improve the Cosmetolens landing page with a modern, engaging, responsive, and production-ready user experience.
+
+One team member will first create the complete landing page structure and push it to the main branch. After that, each student will improve specific components and contribute their changes through Pull Requests.
 
 ---
 
 ## Project Workflow
 
-### Phase 1 – Base Landing Page
+### Step 1: Base Landing Page
 
-One team member will create the complete landing page structure using AI-generated content and basic UI components.
+A base landing page will be created and pushed to the `main` branch.
 
-This version will be pushed to the **main branch** and will act as the base project for the entire team.
-
----
-
-### Phase 2 – Component Redesign
-
-After the base landing page is ready:
-
-* Each student will choose one or more components to improve.
-* Students can decide among themselves which component they want to work on.
-* Examples include:
-
-  * Navbar
-  * Hero Section
-  * Problem Statement Section
-  * How It Works Section
-  * AI Analysis Section
-  * Product Intelligence Section
-  * Rewards Section
-  * Knowledge Hub Section
-  * Footer
-  * Mobile Responsiveness
-  * Animations & Interactions
-
-The goal is to improve the UI/UX while maintaining consistency across the website.
+This will be the starting point for all contributors.
 
 ---
 
-## Branch Rules
+### Step 2: Create Your Own Branch
 
-🚨 Do NOT work on the main branch.
+Do not work on the `main` branch.
 
-Every student must create their own branch using their name.
+Create a branch using your name.
 
-Examples:
+Example:
 
 ```bash
 git checkout -b kartik-jain
 ```
 
-```bash
-git checkout -b rahul-sharma
-```
+All your work should happen inside your personal branch.
 
-```bash
-git checkout -b priya-patel
-```
+---
 
-Once created, all your work should happen only on your personal branch.
+### Step 3: Choose a Component
+
+Coordinate with your teammates and choose a component to improve.
+
+Examples:
+
+* Navbar
+* Hero Section
+* Problem Statement Section
+* How It Works Section
+* AI Analysis Section
+* Ingredient Recommendation Section
+* Product Intelligence Section
+* Rewards Section
+* Knowledge Hub Section
+* Footer
+* Mobile Responsiveness
+* Animations & Interactions
 
 ---
 
 ## Getting Started
 
-### Clone the Repository
+### Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/KVGAI-Tech/Cosmetolens-Landing-Page-PS1-Interns.git
 ```
 
-### Move Into Project Folder
+### Open Project
 
 ```bash
-cd <repository-name>
+cd Cosmetolens-Landing-Page-PS1-Interns
 ```
 
-### Pull Latest Main Branch
+### Get Latest Code
 
 ```bash
 git pull origin main
@@ -92,81 +83,96 @@ git pull origin main
 git checkout -b your-name
 ```
 
----
-
-## Working on Your Component
-
-Once you select a component:
-
-* Make your UI improvements.
-* Test your changes properly.
-* Commit changes regularly to your branch.
-
 Example:
 
 ```bash
-git add .
-
-git commit -m "Improved Navbar Design"
-
-git push origin your-name
+git checkout -b kartik-jain
 ```
+
+After creating your branch, all your work should be done on that branch only.
 
 ---
 
-## Before Every Push
+## Before You Push
 
-Always update your branch with the latest changes from the main branch.
+Always get the latest changes from the main branch before pushing your work.
 
 ```bash
 git checkout main
-
 git pull origin main
 
 git checkout your-name
-
 git merge main
 ```
 
-Resolve conflicts if any.
-
-This helps prevent merge conflicts when your Pull Request is reviewed.
-
----
-
-## Submitting Your Work
-
-After completing your component:
+Then push your updated branch:
 
 ```bash
-git add .
-
-git commit -m "Improved Hero Section UI"
-
 git push origin your-name
 ```
 
-Then create a Pull Request:
+This helps prevent merge conflicts when creating your Pull Request.
 
-```text
-your-name branch → main branch
+---
+
+## Submit Your Changes
+
+### Add Files
+
+```bash
+git add .
+```
+
+### Commit Changes
+
+```bash
+git commit -m "Improved Navbar UI"
+```
+
+### Push Changes
+
+```bash
+git push origin your-name
 ```
 
 ---
 
-## Pull Request (PR) Rules
+## Raise a Pull Request
 
-✅ Raise a PR after completing your work.
+After completing your work:
 
-✅ Add a clear description of the changes you made.
+1. Push your branch.
+2. Create a Pull Request (PR).
+3. Select:
 
-✅ Ensure your code is working before raising a PR.
+```text
+your-name → main
+```
 
-✅ Update your branch with the latest main branch before creating the PR.
+4. Add a brief description of your changes.
+5. Submit the PR.
+
+---
+
+## Important Rules
+
+✅ Create your own branch.
+
+✅ Work only on your own branch.
+
+✅ Pull latest changes regularly.
+
+✅ Raise a Pull Request for all changes.
+
+✅ Keep designs modern, responsive, and professional.
+
+❌ Do not push directly to `main`.
 
 ❌ Do not merge your own PR.
 
-❌ Do not push directly to main.
+❌ Do not delete another contributor's work.
+
+❌ Do not make changes directly on someone else's branch.
 
 ---
 
@@ -174,43 +180,23 @@ your-name branch → main branch
 
 All Pull Requests will be reviewed by Kartik.
 
-Only approved changes will be merged into the main branch.
+Only approved changes will be merged into the `main` branch.
 
-The main branch will be treated as the production branch and should remain stable at all times.
-
----
-
-## Important Rules
-
-✅ Create only one branch using your name.
-
-✅ Work only on your own branch.
-
-✅ Coordinate with teammates before selecting components.
-
-✅ Pull latest changes from main regularly.
-
-✅ Raise a PR when your work is complete.
-
-❌ Do not push directly to main.
-
-❌ Do not delete or modify another person's work without discussion.
-
-❌ Do not merge your own PR.
+The `main` branch will be treated as the production branch.
 
 ---
 
 ## Design Goal
 
-The final landing page should feel:
+The final landing page should be:
 
 * Modern
 * Premium
 * Professional
-* Trustworthy
-* AI-Powered
-* Skincare-Focused
 * Mobile Responsive
+* User Friendly
+* AI-Focused
+* Skincare-Focused
 * Production Ready
 
 ---
@@ -220,3 +206,13 @@ The final landing page should feel:
 Detailed product documentation and business requirements will be shared in the WhatsApp group once the team is finalized.
 
 Please review the provided documentation before starting development.
+
+---
+
+## Repository
+
+Cosmetolens Landing Page – PS1 Interns
+
+Repository URL:
+
+https://github.com/KVGAI-Tech/Cosmetolens-Landing-Page-PS1-Interns
