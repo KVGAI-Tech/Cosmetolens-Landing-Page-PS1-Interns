@@ -53,27 +53,42 @@ export const lifestyle = {
 } as const;
 
 export const problem = {
+  eyebrow: "Beyond Generalizations",
   heading: "Why Traditional Product Ratings Fail",
-  body:
-    "A product rated 4.5 stars may work exceptionally well for dry skin but poorly for oily skin. Yet every skincare platform combines thousands of different skin types, concerns, ages, and climates into a single rating. Your skin deserves better.",
+  body: "Precise intelligence reveals hidden ingredient conflicts for specific skin conditions.",
   generic: {
-    label: "Conventional Review Site",
-    title: "Global Star Rating",
+    label: "Global Star Rating",
+    title: "Conventional Review Site",
     rating: 4.5,
-    // "12,400" is a placeholder review count (not in the source doc).
-    note: "Based on 12,400 unverified general reviews.",
+    reviewsCount: "12,400 reviews",
+    note: "A standard metric that ignores your unique biological fingerprint.",
   },
   precise: {
-    tag: "Cosmetolens Verified",
+    tag: "Active Analysis",
     label: "Cosmetolens Intelligence",
     title: "Bio-Profile Compatibility",
     bars: [
-      { label: "For Dry Skin Type", score: 9.1, pct: 91, tone: "primary" as const },
-      { label: "For Oily Skin Type", score: 6.2, pct: 62, tone: "muted" as const },
+      {
+        label: "Optimal for Dry Skin conditions.",
+        score: 9.1,
+        pct: 91,
+        tone: "success" as const,
+        status: "Bio-Compatible",
+        targetSkin: "Dry Skin",
+      },
+      {
+        label: "Ingredients may aggravate Oily Skin profiles.",
+        score: 6.2,
+        pct: 62,
+        tone: "primary" as const,
+        status: "Potential Conflict",
+        targetSkin: "Oily Skin",
+      },
     ],
     note: "Precise intelligence reveals hidden ingredient conflicts for specific skin conditions.",
   },
 } as const;
+
 
 export const howItWorks = {
   heading: "How Cosmetolens Works",
