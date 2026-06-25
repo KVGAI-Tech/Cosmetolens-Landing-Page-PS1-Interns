@@ -6,7 +6,70 @@ This repository is part of the PS1 Internship Program.
 
 The goal of this project is to redesign and improve the Cosmetolens landing page with a modern, engaging, responsive, and production-ready user experience.
 
-One team member will first create the complete landing page structure and push it to the main branch. After that, each student will improve specific components and contribute their changes through Pull Requests.
+One team member will first create the complete landing page structure and push it to the `main` branch. After that, each student will improve specific components and contribute their changes through Pull Requests.
+
+---
+
+## ⚠️ Contributing — Git Workflow (READ THIS FIRST)
+
+**Never develop on, or push to, `main`.** `main` is the protected, reviewed code. All your work happens on your own branch, and changes only reach `main` through a Pull Request that an admin reviews and merges.
+
+Follow these steps exactly:
+
+```bash
+# 1. Clone the repository (you've been added as a collaborator)
+git clone https://github.com/KVGAI-Tech/Cosmetolens-Landing-Page-PS1-Interns.git
+
+# 2. Go into the project folder
+cd Cosmetolens-Landing-Page-PS1-Interns
+
+# 3. Make sure your local main is up to date with the latest code
+git checkout main
+git pull origin main
+
+# 4. Create YOUR OWN branch off main — just use your name
+#    e.g. rahul
+git checkout -b <your-name>
+
+# 5. Develop locally on YOUR branch. When committing, mention the feature you worked on
+git add .
+git commit -m "<feature you worked on> — what you changed"
+
+# 6. Push YOUR branch to GitHub (NOT main)
+git push -u origin <your-name>
+```
+
+After pushing, open a Pull Request (`<your-name> → main`) and wait for an admin to review and merge it.
+
+---
+
+## Tech Stack
+
+* **React 19** + **TypeScript**
+* **Vite** (dev server & build)
+* **Tailwind CSS** (styling)
+* **lucide-react** (icons)
+
+## Local Setup
+
+```bash
+# Install dependencies
+npm install
+
+# Start the dev server (http://localhost:5173)
+npm run dev
+
+# Type-check + production build
+npm run build
+
+# Preview the production build
+npm run preview
+
+# Lint
+npm run lint
+```
+
+If the project needs environment variables, copy `.env.example` to `.env` and fill in the values.
 
 ---
 
@@ -54,42 +117,6 @@ Examples:
 * Footer
 * Mobile Responsiveness
 * Animations & Interactions
-
----
-
-## Getting Started
-
-### Clone Repository
-
-```bash
-git clone https://github.com/KVGAI-Tech/Cosmetolens-Landing-Page-PS1-Interns.git
-```
-
-### Open Project
-
-```bash
-cd Cosmetolens-Landing-Page-PS1-Interns
-```
-
-### Get Latest Code
-
-```bash
-git pull origin main
-```
-
-### Create Your Personal Branch
-
-```bash
-git checkout -b your-name
-```
-
-Example:
-
-```bash
-git checkout -b kartik-jain
-```
-
-After creating your branch, all your work should be done on that branch only.
 
 ---
 
