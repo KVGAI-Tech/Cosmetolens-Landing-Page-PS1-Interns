@@ -35,7 +35,7 @@ function getIngredientIcon(name: string): LucideIcon {
 const banner = [
   { name: "Copper Tripeptide-1", tag: "Repair", image: "/images/copper.png" },
   { name: "Alpha Arbutin", tag: "Brighten", image: "/images/alpha.png" },
-  { name: "Matrixyl® 3000", tag: "Renew", image: "/images/matrixyl.png" },
+  { name: "Matrixyl 3000", tag: "Renew", image: "/images/matrixyl.png" },
   { name: "Vitamin E & C", tag: "Protect", image: "/images/vitamin.png" },
   { name: "Niacinamide", tag: "Even tone", image: "/images/niacinamide.png" },
 ];
