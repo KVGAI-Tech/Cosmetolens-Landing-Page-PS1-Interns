@@ -1,6 +1,8 @@
 import { Star } from "lucide-react";
 import { Section } from "../ui/Section";
 import { Reveal } from "../ui/Reveal";
+import { CountUp } from "../ui/CountUp";
+import { AnimatedBar } from "../ui/AnimatedBar";
 import { problem } from "../../data/content";
 
 export function ProblemComparison() {
@@ -30,7 +32,7 @@ export function ProblemComparison() {
             </span>
             <div className="flex items-baseline gap-4 mb-6">
               <span className="font-serif text-display-xl text-ink leading-none">
-                {generic.rating}
+                <CountUp value={generic.rating} decimals={1} />
               </span>
               <div className="flex flex-col">
                 <div className="flex text-primary mb-1">
@@ -71,7 +73,6 @@ export function ProblemComparison() {
           {/* Shimmer line */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent shimmer-line"></div>
 
-
           <div className="flex justify-between items-center mb-8">
             <h4 className="text-caption-uppercase uppercase text-primary font-bold tracking-wider">
               {precise.label}
@@ -86,7 +87,7 @@ export function ProblemComparison() {
               <div key={index} className="space-y-3">
                 <div className="flex justify-between items-end">
                   <span className="font-serif text-display-md text-ink">
-                    {bar.score}
+                    <CountUp value={bar.score} decimals={1} />
                     <span className="text-body-md text-muted font-normal">/10</span>
                   </span>
                   <span
@@ -97,14 +98,11 @@ export function ProblemComparison() {
                     {bar.status}
                   </span>
                 </div>
-                <div className="h-2 w-full bg-surface-card-strong rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full ${
-                      bar.tone === "success" ? "bg-success" : "bg-primary"
-                    }`}
-                    style={{ width: `${bar.pct}%` }}
-                  ></div>
-                </div>
+                <AnimatedBar
+                  pct={bar.pct}
+                  trackClassName="h-2 bg-surface-card-strong"
+                  fillClassName={bar.tone === "success" ? "bg-success" : "bg-primary"}
+                />
                 <p className="text-caption text-muted">
                   Optimal for <span className="font-bold text-ink">{bar.targetSkin}</span> conditions.
                 </p>
@@ -116,3 +114,5 @@ export function ProblemComparison() {
     </Section>
   );
 }
+
+
