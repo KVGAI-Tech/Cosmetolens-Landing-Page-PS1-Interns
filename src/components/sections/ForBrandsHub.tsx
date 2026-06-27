@@ -8,7 +8,7 @@ const feedbackImage =
 const scienceImage =
   "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85&w=900";
 
-function FeatureList({ items, dark = false }: { items: string[]; dark?: boolean }) {
+function FeatureList({ items, dark = false }: { items: readonly string[]; dark?: boolean }) {
   return (
     <div className="mt-5 grid grid-cols-1 gap-2">
       {items.map((item, index) => (
