@@ -66,7 +66,7 @@ export function ClinicalEvidence() {
             Clinical Evidence
           </div>
 
-          <h2 className="text-display-xl">{c.heading}</h2>
+          <h2 className="font-serif text-display-xl text-ink">{c.heading}</h2>
 
           <p className="text-body-lg text-muted">{c.body}</p>
 
@@ -81,7 +81,7 @@ export function ClinicalEvidence() {
 
           {showEvidence && (
             <div className="mt-8">
-              <div className="inline-flex rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-primary">
+              <div className="inline-flex rounded-pill bg-primary-tint px-4 py-2 text-body-sm font-semibold text-primary">
                 Evidence Highlights
               </div>
 
@@ -96,19 +96,19 @@ export function ClinicalEvidence() {
                         onClick={() =>
                           setExpandedCard(expandedCard === index ? null : index)
                         }
-                        className="group w-full rounded-2xl border border-[#E9DDD1] bg-white/90 p-5 text-left shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-primary hover:shadow-xl"
+                        className="group w-full rounded-lg border border-hairline bg-canvas p-5 text-left shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:border-primary hover:shadow-lift"
                       >
                       
 
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-tint text-primary transition-all duration-200 group-hover:bg-primary group-hover:text-on-primary">
                           <Icon className="h-6 w-6" strokeWidth={1.8} />
                         </div>
 
-                        <h3 className="mt-5 text-lg font-semibold text-ink">
+                        <h3 className="mt-5 text-title-md text-ink">
                           {item.title}
                         </h3>
 
-                        <p className="mt-2 text-sm leading-relaxed text-muted">
+                        <p className="mt-2 text-body-sm text-muted">
                           {item.description}
                         </p>
 
@@ -130,7 +130,7 @@ export function ClinicalEvidence() {
                             {item.details.map((detail) => (
                               <li
                                 key={detail}
-                                className="flex items-center gap-2 text-sm text-muted"
+                                className="flex items-center gap-2 text-body-sm text-muted"
                               >
                                 <BadgeCheck className="h-4 w-4 text-primary shrink-0" />
                                 {detail}
@@ -149,7 +149,7 @@ export function ClinicalEvidence() {
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="rounded-3xl border border-hairline bg-surface-soft p-10 shadow-soft transition-all duration-500 hover:shadow-xl">
+          <div className="rounded-xl border border-hairline bg-surface-soft p-10 shadow-soft transition-all duration-300 hover:shadow-lift">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-canvas shadow-md">
               <BadgeCheck
                 className="h-12 w-12 text-primary"
@@ -162,31 +162,31 @@ export function ClinicalEvidence() {
                 VERIFIED
               </div>
 
-              <h3 className="mt-3 text-5xl font-bold text-primary">
+              <h3 className="mt-3 font-serif text-display-xl text-primary">
                 98%
               </h3>
 
-              <p className="mt-2 text-lg font-semibold text-ink">
+              <p className="mt-2 text-title-md text-ink">
                 Clinical Evidence Coverage
               </p>
             </div>
 
             <div className="mt-8 space-y-4">
-              <div className="flex items-center gap-3 rounded-xl bg-canvas px-4 py-3">
+              <div className="flex items-center gap-3 rounded-lg bg-canvas px-4 py-3">
                 <BadgeCheck className="h-5 w-5 text-primary" />
                 <span className="text-body-md">
                   Peer Reviewed
                 </span>
               </div>
 
-              <div className="flex items-center gap-3 rounded-xl bg-canvas px-4 py-3">
+              <div className="flex items-center gap-3 rounded-lg bg-canvas px-4 py-3">
                 <BadgeCheck className="h-5 w-5 text-primary" />
                 <span className="text-body-md">
                   Evidence Based
                 </span>
               </div>
 
-              <div className="flex items-center gap-3 rounded-xl bg-canvas px-4 py-3">
+              <div className="flex items-center gap-3 rounded-lg bg-canvas px-4 py-3">
                 <BadgeCheck className="h-5 w-5 text-primary" />
                 <span className="text-body-md">
                   Dermatologist Verified
