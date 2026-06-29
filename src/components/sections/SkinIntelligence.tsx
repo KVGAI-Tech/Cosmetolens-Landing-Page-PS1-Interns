@@ -42,7 +42,7 @@ export function SkinIntelligence() {
             >
               {/* Glassmorphism scan card — top-left */}
               <div className="absolute left-5 top-8 rounded-lg border border-hairline/50 bg-canvas/55 p-4 shadow-soft backdrop-blur-md">
-                <div className="text-caption-uppercase uppercase text-primary">{s.overlayLabel}</div>
+                <div className="text-caption-uppercase uppercase text-primary tracking-wider">{s.overlayLabel}</div>
                 <div className="relative mt-2 h-1 w-32 overflow-hidden rounded-pill bg-surface-card/70">
                   <div className="absolute h-full w-1/2 bg-primary animate-scan" />
                 </div>
@@ -54,7 +54,7 @@ export function SkinIntelligence() {
                   <ScanLine className="h-4 w-4 shrink-0 text-primary" strokeWidth={2} />
                   <div>
                     <div className="font-serif text-title-md leading-none text-ink">10,000+</div>
-                    <div className="mt-0.5 text-caption-uppercase uppercase text-muted">Scans Done</div>
+                    <div className="mt-0.5 text-caption-uppercase uppercase text-muted tracking-wider">Scans Done</div>
                   </div>
                 </div>
               </div>
@@ -65,8 +65,8 @@ export function SkinIntelligence() {
         {/* Right: text + feature cards */}
         <Reveal delay={120} className="space-y-8">
           <div>
-            <div className="mb-4 text-eyebrow uppercase text-primary">AI Skin Analysis</div>
-            <h2 className="bg-gradient-to-br from-ink via-body to-primary bg-clip-text font-serif text-display-xl text-transparent">
+            <div className="mb-3 text-eyebrow uppercase text-primary tracking-widest">AI Skin Analysis</div>
+            <h2 className="bg-gradient-to-br from-ink via-body to-primary bg-clip-text font-serif text-display-xl text-transparent leading-tight">
               {s.heading}
             </h2>
           </div>
