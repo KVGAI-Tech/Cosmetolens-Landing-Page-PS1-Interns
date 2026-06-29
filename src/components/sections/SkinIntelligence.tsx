@@ -65,16 +65,18 @@ export function SkinIntelligence() {
         {/* Right: text + feature cards */}
         <Reveal delay={120} className="space-y-8">
           <div>
-            <div className="mb-4 text-eyebrow uppercase text-primary">AI Skin Analysis</div>
+            <div className="text-eyebrow uppercase tracking-[0.18em] text-primary">AI Skin Analysis</div>
             <h2 className="bg-gradient-to-br from-ink via-body to-primary bg-clip-text font-serif text-display-xl text-transparent">
               {s.heading}
             </h2>
           </div>
 
-          <p className="text-body-lg text-muted">{s.body}</p>
+          <p className="max-w-xl text-body-lg leading-8 text-muted">
+            {s.body}
+          </p>
 
           {/* Feature list */}
-          <ul className="divide-y divide-hairline">
+          <ul className="mt-8 divide-y divide-hairline">
             {s.markers.map((marker) => {
               const meta = MARKER_META[marker];
               if (!meta) return null;
@@ -88,15 +90,20 @@ export function SkinIntelligence() {
                     <Icon className="h-4 w-4 text-primary" strokeWidth={1.75} />
                   </div>
                   <div className="transition-transform duration-200 group-hover:translate-x-0.5">
-                    <div className="text-title-sm text-ink">{marker}</div>
-                    <p className="text-body-sm text-muted">{meta.description}</p>
+                    <div className="text-title-md font-semibold text-ink">{marker}</div>
+                    <p className="mt-1 text-body-sm leading-6 text-muted">{meta.description}</p>
                   </div>
                 </li>
               );
             })}
           </ul>
 
-          <Button variant="primary" size="lg" uppercase className="px-10">
+          <Button
+            variant="primary"
+            size="lg"
+            uppercase
+            className="mt-2 px-10"
+          >
             {s.cta}
           </Button>
         </Reveal>
