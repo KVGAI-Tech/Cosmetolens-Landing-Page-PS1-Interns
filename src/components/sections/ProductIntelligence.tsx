@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useMemo } from "react";
 import { Container }         from "../ui/Container";
 import { ImageSlot }         from "../ui/ImageSlot";
@@ -95,9 +93,9 @@ const priceFilters: { id: PriceTier | "all"; label: string; sub: string }[] = [
 
 /* price → left border colour */
 const tierBorder: Record<PriceTier, string> = {
-  budget:  "border-l-sky-400",
-  mid:     "border-l-emerald-400",
-  premium: "border-l-amber-400",
+  budget:  "border-l-accent",
+  mid:     "border-l-accent-strong",
+  premium: "border-l-primary",
 };
 
 const hintWidth: Record<"high"|"mid"|"low", string> = {
@@ -122,13 +120,13 @@ function FilterPill({
     <button
       onClick={onClick}
       className={cn(
-        "rounded-full border px-3.5 py-1.5 text-[10px] uppercase tracking-[0.13em]",
+        "rounded-pill border px-3.5 py-1.5 text-caption-uppercase uppercase",
         "transition-all duration-200 outline-none select-none",
         "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1",
         "active:scale-[0.96]",
         active
-          ? "border-ink bg-ink text-canvas shadow-sm"
-          : "border-hairline bg-canvas text-muted hover:border-ink/50 hover:text-ink hover:shadow-sm"
+          ? "border-ink bg-ink text-canvas shadow-soft"
+          : "border-hairline bg-canvas text-muted hover:border-ink/50 hover:text-ink hover:shadow-soft"
       )}
     >
       {children}
@@ -161,12 +159,12 @@ function SortButton({
     <button
       onClick={() => onChange(cycle[order])}
       className={cn(
-        "rounded-full border px-3.5 py-1.5 text-[10px] uppercase tracking-[0.13em]",
+        "rounded-pill border px-3.5 py-1.5 text-caption-uppercase uppercase",
         "transition-all duration-200 outline-none select-none active:scale-[0.96]",
         "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1",
         order !== "none"
-          ? "border-ink bg-ink text-canvas shadow-sm"
-          : "border-hairline bg-canvas text-muted hover:border-ink/50 hover:text-ink hover:shadow-sm"
+          ? "border-ink bg-ink text-canvas shadow-soft"
+          : "border-hairline bg-canvas text-muted hover:border-ink/50 hover:text-ink hover:shadow-soft"
       )}
     >
       {labels[order]}
@@ -182,7 +180,7 @@ function BlurredScore({ hint }: { hint: "high" | "mid" | "low" }) {
   return (
     <div className="flex flex-col items-center gap-1.5 shrink-0 w-12">
       <span
-        className="font-serif text-xl leading-none text-ink select-none"
+        className="font-serif text-display-sm leading-none text-ink select-none"
         style={{ filter:"blur(5px)", userSelect:"none" }}
         aria-hidden
       >
@@ -213,9 +211,9 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
     <Reveal delay={index * 60}>
       <div
         className={cn(
-          "group relative flex flex-col sm:flex-row gap-4 rounded-xl border border-l-[3px] p-5",
-          "transition-all duration-250 bg-surface-soft border-hairline",
-          "hover:bg-canvas hover:shadow-[0_2px_20px_rgba(0,0,0,0.06)]",
+          "group relative flex flex-col sm:flex-row gap-4 rounded-lg border border-l-[3px] p-5",
+          "transition-all duration-200 bg-surface-soft border-hairline",
+          "hover:bg-canvas hover:shadow-soft",
           tierBorder[product.priceTier]
         )}
       >
@@ -231,7 +229,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           {/* Brand · Name · Price */}
           <div className="flex items-start justify-between gap-3 flex-wrap">
             <div>
-              <p className="text-[9px] uppercase tracking-[0.16em] text-muted mb-0.5">
+              <p className="text-caption-uppercase uppercase text-muted mb-0.5">
                 {product.brand}
               </p>
               <h4 className="text-title-md text-ink leading-snug group-hover:text-primary transition-colors duration-200">
@@ -244,7 +242,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           </div>
 
           {/* Meta */}
-          <p className="text-[10px] uppercase tracking-widest text-muted">
+          <p className="text-caption-uppercase uppercase text-muted">
             {product.concern}&ensp;·&ensp;{product.texture}
           </p>
 
@@ -253,10 +251,10 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
           {/* Ingredients */}
           <div className="flex flex-wrap items-center gap-2 pt-0.5">
-            <span className="text-[9px] uppercase tracking-[0.14em] text-muted">Actives:</span>
+            <span className="text-caption-uppercase uppercase text-muted">Actives:</span>
             {product.keyIngredients.map((ing) => (
               <span key={ing}
-                className="border border-hairline rounded-full px-2.5 py-0.5 text-[10px] text-ink">
+                className="rounded-pill border border-hairline px-2.5 py-0.5 text-caption text-ink">
                 {ing}
               </span>
             ))}
@@ -264,10 +262,10 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
           {/* Skin types */}
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[9px] uppercase tracking-[0.14em] text-muted">Suits:</span>
+            <span className="text-caption-uppercase uppercase text-muted">Suits:</span>
             {product.skinTypes.map((st) => (
               <span key={st}
-                className="text-[10px] text-muted border border-hairline/50 rounded-full px-2 py-0.5">
+                className="text-caption text-muted rounded-pill border border-hairline/50 px-2 py-0.5">
                 {st}
               </span>
             ))}
@@ -310,10 +308,10 @@ export function ProductIntelligence() {
         <Reveal>
           <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[10px] uppercase tracking-[0.18em] text-primary mb-3">
+              <p className="text-eyebrow uppercase text-primary mb-3">
                 Product Intelligence
               </p>
-              <h2 className="text-display-xl max-w-lg leading-tight">
+              <h2 className="font-serif text-display-xl max-w-lg leading-tight text-ink">
                 {p.heading}
               </h2>
             </div>
@@ -342,8 +340,8 @@ export function ProductIntelligence() {
 
             {/* What we analyse */}
             <Reveal>
-              <div className="rounded-xl border border-hairline bg-surface-soft p-5 space-y-4">
-                <p className="text-[9px] uppercase tracking-[0.18em] text-muted">
+              <div className="rounded-lg border border-hairline bg-surface-soft p-5 space-y-4">
+                <p className="text-caption-uppercase uppercase text-muted">
                   Based on your skin, we analyse
                 </p>
                 <ul className="space-y-3">
@@ -358,8 +356,8 @@ export function ProductIntelligence() {
                     <li key={item.label} className="flex items-start gap-3">
                       <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
                       <div>
-                        <p className="text-[11px] text-ink font-medium leading-snug">{item.label}</p>
-                        <p className="text-[10px] text-muted">{item.detail}</p>
+                        <p className="text-body-sm text-ink font-medium">{item.label}</p>
+                        <p className="text-caption text-muted">{item.detail}</p>
                       </div>
                     </li>
                   ))}
@@ -400,7 +398,7 @@ export function ProductIntelligence() {
                 {/* Category + Price sort — secondary row */}
                 <div className="flex flex-col sm:flex-row gap-5">
                   <div className="flex-1">
-                    <p className="text-[9px] uppercase tracking-[0.16em] text-muted mb-2.5">
+                    <p className="text-caption-uppercase uppercase text-muted mb-2.5">
                       Category
                     </p>
                     <div className="flex flex-wrap gap-1.5">
@@ -419,7 +417,7 @@ export function ProductIntelligence() {
                   <div className="sm:w-px sm:bg-hairline" />
 
                   <div>
-                    <p className="text-[9px] uppercase tracking-[0.16em] text-muted mb-2.5">
+                    <p className="text-caption-uppercase uppercase text-muted mb-2.5">
                       Budget
                     </p>
                     <div className="flex flex-wrap gap-1.5">
@@ -443,7 +441,7 @@ export function ProductIntelligence() {
             {/* ── Result meta + sort ── */}
             <Reveal>
               <div className="flex items-center justify-between gap-3 flex-wrap -mt-1">
-                <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
+                <p className="text-caption-uppercase uppercase text-muted">
                   Showing 3 of {catalogue.filter((pr) => {
                     const c = activeCategory === "all" || pr.category === activeCategory;
                     const s = activeSkin === "all" || pr.skinTypes.includes(activeSkin as SkinType);
@@ -454,7 +452,7 @@ export function ProductIntelligence() {
                   {activeCategory !== "all" && ` · ${categoryFilters.find(f => f.id === activeCategory)?.label}`}
                 </p>
                 <div className="flex items-center gap-2">
-                  <span className="text-[9px] uppercase tracking-[0.14em] text-muted">Sort:</span>
+                  <span className="text-caption-uppercase uppercase text-muted">Sort:</span>
                   <SortButton order={sortOrder} onChange={setSortOrder} />
                 </div>
               </div>
@@ -479,7 +477,7 @@ export function ProductIntelligence() {
 
             {/* ── Trust line ── */}
             <Reveal>
-              <p className="text-[9px] uppercase tracking-[0.16em] text-muted border-t border-hairline pt-4">
+              <p className="text-caption-uppercase uppercase text-muted border-t border-hairline pt-4">
                 Recommendations are built from your skin profile — never from paid placements or brand partnerships.
               </p>
             </Reveal>

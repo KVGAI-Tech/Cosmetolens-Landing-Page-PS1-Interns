@@ -100,7 +100,7 @@ export function IngredientMatches() {
       >
         <div className="max-w-2xl">
           <div className="mb-3 text-eyebrow uppercase text-primary sm:mb-4">{ing.eyebrow}</div>
-          <h2 className="text-display-md sm:text-display-xl">
+          <h2 className="font-serif text-display-md sm:text-display-xl">
             {ing.heading.split(/(Your)/g).map((part, i) =>
               part === "Your" ? (
                 <span key={i} className="text-primary">
@@ -383,7 +383,7 @@ export function IngredientMatches() {
 
                 {/* Mobile-only: inline detail panel directly below the active row */}
                 {selected && (
-                  <div className="relative mt-2 overflow-hidden rounded-xl border border-hairline bg-canvas p-5 shadow-soft sm:hidden">
+                  <div className="relative mt-2 overflow-hidden rounded-lg border border-hairline bg-canvas p-5 shadow-soft sm:hidden">
                     <div
                       className="pointer-events-none absolute inset-0"
                       style={{
@@ -425,7 +425,7 @@ export function IngredientMatches() {
 
         {/* Detail panel — desktop/tablet only */}
         <div
-          className="relative hidden overflow-hidden rounded-xl border border-hairline bg-canvas p-6 shadow-soft transition-all duration-300 sm:block sm:p-10 md:col-span-7"
+          className="relative hidden overflow-hidden rounded-lg border border-hairline bg-canvas p-6 shadow-soft transition-all duration-300 sm:block sm:p-10 md:col-span-7"
           style={{ zIndex: isHovering ? 30 : "auto" }}
         >
           {/* Orange wash: darker on the left, fading out toward the bottom-right
