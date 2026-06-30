@@ -10,27 +10,27 @@ export function ProblemComparison() {
 
   return (
     <Section surface="soft">
-      <Reveal className="mx-auto mb-16 max-w-3xl text-center">
-        <div className="mb-5 text-eyebrow uppercase text-primary tracking-widest">
+      <Reveal className="mx-auto mb-10 max-w-3xl text-center">
+        <div className="mb-3 text-eyebrow uppercase text-primary tracking-widest">
           {problem.eyebrow}
         </div>
-        <h2 className="text-display-xl leading-tight text-ink">
+        <h2 className="font-serif text-display-xl leading-tight text-ink">
           {problem.heading}
         </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-body-lg text-muted">
+        <p className="mx-auto mt-3 max-w-2xl text-body-lg text-muted">
           {problem.body}
         </p>
       </Reveal>
 
       {/* Two separate comparison panels */}
-      <div className="mx-auto grid max-w-5xl grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl">
         {/* Traditional Rating Mockup */}
-        <Reveal className="bg-white rounded-xl p-10 border border-hairline tinted-shadow flex flex-col h-full justify-between">
+        <Reveal className="bg-canvas rounded-xl p-8 border border-hairline tinted-shadow flex flex-col h-full justify-between">
           <div className="mb-auto">
-            <span className="text-caption-uppercase uppercase text-muted-soft block mb-4 tracking-widest">
+            <span className="text-caption-uppercase uppercase text-muted-soft block mb-3 tracking-wider">
               {generic.label}
             </span>
-            <div className="flex items-baseline gap-4 mb-6">
+            <div className="flex items-baseline gap-4 mb-4">
               <span className="font-serif text-display-xl text-ink leading-none">
                 <CountUp value={generic.rating} decimals={1} />
               </span>
@@ -61,7 +61,7 @@ export function ProblemComparison() {
               </div>
             </div>
           </div>
-          <div className="border-t border-hairline pt-6 mt-8">
+          <div className="border-t border-hairline pt-4 mt-6">
             <p className="italic text-body-md text-muted leading-relaxed">
               "{generic.note}"
             </p>
@@ -69,12 +69,12 @@ export function ProblemComparison() {
         </Reveal>
 
         {/* Cosmetolens Intelligence Mockup */}
-        <Reveal className="bg-surface-soft rounded-xl tinted-shadow relative overflow-hidden shimmer-card p-10 flex flex-col h-full justify-between border border-hairline">
+        <Reveal className="bg-surface-card rounded-xl tinted-shadow relative overflow-hidden shimmer-card p-8 flex flex-col h-full justify-between border border-hairline">
           {/* Shimmer line */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent shimmer-line"></div>
 
-          <div className="flex justify-between items-center mb-8">
-            <h4 className="text-caption-uppercase uppercase text-primary font-bold tracking-wider">
+          <div className="flex justify-between items-center mb-6">
+            <h4 className="text-caption-uppercase uppercase text-primary font-semibold tracking-wider">
               {precise.label}
             </h4>
             <span className="px-3 py-1 bg-primary/10 text-primary text-caption font-semibold rounded-full border border-primary/20">
@@ -82,9 +82,9 @@ export function ProblemComparison() {
             </span>
           </div>
 
-          <div className="space-y-8 flex-grow flex flex-col justify-center">
+          <div className="space-y-6 flex-grow flex flex-col justify-center">
             {precise.bars.map((bar, index) => (
-              <div key={index} className="space-y-3">
+              <div key={index} className="space-y-2">
                 <div className="flex justify-between items-end">
                   <span className="font-serif text-display-md text-ink">
                     <CountUp value={bar.score} decimals={1} />
@@ -114,5 +114,6 @@ export function ProblemComparison() {
     </Section>
   );
 }
+
 
 

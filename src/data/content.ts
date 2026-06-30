@@ -91,29 +91,31 @@ export const problem = {
 
 
 export const howItWorks = {
+  eyebrow: "How it Works",
   heading: "How Cosmetolens Works",
   sub: "Three steps from a unique skin profile to personalized, evidence-based intelligence.",
   steps: [
     {
       no: "01",
       title: "Create Your Skin ID",
-      body:
-        "Build a personalized skin profile using our guided questionnaire and AI-powered skin analysis.",
+      body: "Take a comprehensive skin assessment or upload your DNA profile to build a unique biological identity. This forms the foundation of all intelligence.",
+      icon: "fingerprint" as const,
     },
     {
       no: "02",
       title: "Report Your Experience",
-      body:
-        "Share how a product performed for your skin, including efficacy, improvements, and any side effects.",
+      body: "Contribute real-world data by logging how your skin reacts to different products. Our community data strengthens the algorithm for everyone.",
+      icon: "history_edu" as const,
     },
     {
       no: "03",
       title: "Unlock Personalized Intelligence",
-      body:
-        "Receive ingredient recommendations, product recommendations, and insights based on people with skin profiles similar to yours.",
+      body: "Receive precise, data-driven recommendations that match your Skin ID perfectly. Eliminate guesswork and shop with absolute confidence.",
+      icon: "insights" as const,
     },
   ],
 } as const;
+
 
 export const skinIntelligence = {
   heading: "Understand Your Skin Better",

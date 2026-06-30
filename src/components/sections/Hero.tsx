@@ -8,7 +8,7 @@ import { hero } from "../../data/content";
 export function Hero() {
   return (
     <section className="hero-wash grain">
-      <div className="mx-auto grid max-w-content grid-cols-12 items-center gap-12 px-16 py-section">
+      <div className="mx-auto grid max-w-content grid-cols-12 items-center gap-12 px-16 pb-section pt-7">
         {/* Copy */}
         <Reveal className="col-span-7 space-y-7">
           <Badge variant="accent">{hero.eyebrow}</Badge>

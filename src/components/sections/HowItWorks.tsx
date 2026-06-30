@@ -1,82 +1,74 @@
+import { Fingerprint, History, Sparkles } from "lucide-react";
 import { Section } from "../ui/Section";
 import { Reveal } from "../ui/Reveal";
 import { howItWorks } from "../../data/content";
 
-/* Step-level icon initials — one letter per step, visually anchors each card */
-const stepIcons = ["✦", "◎", "◈"];
+function getStepIcon(iconName: string) {
+  const iconProps = {
+    className:
+      "h-6 w-6 text-accent transition-colors duration-300 group-hover:text-primary",
+    strokeWidth: 1.4,
+  };
+  switch (iconName) {
+    case "fingerprint":
+      return <Fingerprint {...iconProps} />;
+    case "history_edu":
+      return <History {...iconProps} />;
+    case "insights":
+      return <Sparkles {...iconProps} />;
+    default:
+      return null;
+  }
+}
 
 export function HowItWorks() {
   return (
     <Section surface="dark">
-      {/* ── Header ── */}
+      {/* ── Header (centered, matches editorial campaign feel) ── */}
       <Reveal>
-        <div className="mb-16 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-accent">
-              How It Works
-            </p>
-            <h2 className="text-display-xl text-on-dark max-w-sm leading-tight">
-              {howItWorks.heading}
-            </h2>
-          </div>
-          <p className="max-w-xs text-body-md text-on-dark-soft md:text-right">
+        <div className="mx-auto mb-16 max-w-2xl text-center">
+          <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-accent">
+            {howItWorks.eyebrow}
+          </p>
+          <h2 className="text-display-xl text-on-dark leading-tight">
+            {howItWorks.heading}
+          </h2>
+          <p className="mt-5 text-body-md text-on-dark-soft">
             {howItWorks.sub}
           </p>
         </div>
       </Reveal>
 
       {/* ── Connector + Steps ── */}
-      <div className="relative">
-        {/* Horizontal rule connecting steps — desktop only */}
+      <div className="relative mx-auto max-w-5xl">
+        {/* Horizontal connector — desktop only, sits behind the icon badges */}
         <div
           aria-hidden="true"
-          className="absolute left-0 right-0 top-[2.75rem] hidden border-t border-white/10 md:block"
+          className="absolute left-[16.5%] right-[16.5%] top-9 hidden h-px bg-white/10 md:block"
         />
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
           {howItWorks.steps.map((step, i) => (
             <Reveal key={step.no} delay={i * 120}>
-              <div className="group flex flex-col gap-5 rounded-xl border border-white/10 bg-white/[0.04] p-7 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.07]">
+              <div className="group flex flex-col items-center text-center">
 
-                {/* Step number + icon row */}
-                <div className="flex items-center justify-between">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-on-dark-soft">
-                    Step {step.no}
-                  </span>
-                  <span
-                    className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-sm text-accent transition-colors duration-300 group-hover:border-accent/40 group-hover:text-on-dark"
-                    aria-hidden="true"
-                  >
-                    {stepIcons[i]}
-                  </span>
+                {/* Icon badge — glow ring kept, but subtle, no ambient page blur */}
+                <div className="relative z-10 mb-6 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-white/15 bg-surface-dark-soft transition-all duration-300 group-hover:border-accent/40 group-hover:shadow-[0_0_20px_rgba(192,98,63,0.18)]">
+                  {getStepIcon(step.icon)}
                 </div>
 
-                {/* Divider */}
-                <div className="h-px w-full bg-white/10" />
+                {/* Step label */}
+                <span className="mb-2 text-[10px] uppercase tracking-[0.2em] text-on-dark-soft">
+                  Step {step.no}
+                </span>
 
                 {/* Title + body */}
-                <div className="flex flex-col gap-3">
-                  <h3 className="text-title-lg text-on-dark leading-snug">
-                    {step.title}
-                  </h3>
-                  <p className="text-body-md text-on-dark-soft leading-relaxed">
-                    {step.body}
-                  </p>
-                </div>
-
-                {/* Step indicator dot */}
-                <div className="mt-auto pt-2 flex items-center gap-1.5">
-                  {howItWorks.steps.map((_, j) => (
-                    <span
-                      key={j}
-                      className={`h-1 rounded-full transition-all duration-300 ${
-                        j === i
-                          ? "w-5 bg-accent"
-                          : "w-1.5 bg-white/20"
-                      }`}
-                    />
-                  ))}
-                </div>
+                <h3 className="text-title-lg text-on-dark leading-snug">
+                  {step.title}
+                </h3>
+                <p className="mt-3 max-w-xs text-body-md text-on-dark-soft leading-relaxed">
+                  {step.body}
+                </p>
               </div>
             </Reveal>
           ))}
@@ -85,7 +77,7 @@ export function HowItWorks() {
 
       {/* ── Bottom CTA ── */}
       <Reveal>
-        <div className="mt-14 flex flex-col items-center gap-4 border-t border-white/10 pt-12 text-center">
+        <div className="mt-16 flex flex-col items-center gap-4 border-t border-white/10 pt-12 text-center">
           <p className="text-body-md text-on-dark-soft max-w-md">
             Takes under 2 minutes. No account required to start.
           </p>
