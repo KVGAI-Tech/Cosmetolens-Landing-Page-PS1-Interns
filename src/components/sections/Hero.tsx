@@ -9,8 +9,7 @@ export function Hero() {
     <section className="hero-wash grain">
       <div className="mx-auto grid max-w-content grid-cols-12 items-center gap-12 px-16 pb-section pt-7">
         {/* Copy */}
-        <Reveal className="col-span-8 space-y-6">
-          <h1 className="text-display-xl text-ink">{hero.headline}</h1>
+        <Reveal className="col-span-7 space-y-16 md:col-span-8 md:space-y-6">          <h1 className="whitespace-pre-line text-display-2xl text-ink md:whitespace-normal md:text-display-xl">{hero.headline}</h1>
 
           <p className="max-w-xl text-body-lg text-muted">{hero.sub}</p>
 
@@ -33,15 +32,24 @@ export function Hero() {
           </ul>
         </Reveal>
 
-        {/* Decorative portrait — smaller, right-aligned */}
-        <Reveal delay={120} className="col-span-4">
+        {/* Portrait on mobile, square on desktop */}
+        <Reveal delay={120} className="col-span-5 md:col-span-4">
+          <ImageSlot
+            src={hero.image}
+            alt="Glowing, healthy skin"
+            ratio="portrait"
+            eager
+            rounded="rounded-xl"
+            className="border border-hairline shadow-lift md:hidden"
+            imgClassName="object-[54%_26%]"
+          />
           <ImageSlot
             src={hero.image}
             alt="Glowing, healthy skin"
             ratio="square"
             eager
             rounded="rounded-xl"
-            className="border border-hairline shadow-lift"
+            className="hidden border border-hairline shadow-lift md:block"
             imgClassName="object-[54%_26%]"
           />
         </Reveal>
