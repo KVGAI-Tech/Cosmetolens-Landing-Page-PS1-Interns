@@ -1,6 +1,5 @@
 import { Check } from "lucide-react";
 import { Button } from "../ui/Button";
-import { Badge } from "../ui/Badge";
 import { ImageSlot } from "../ui/ImageSlot";
 import { Reveal } from "../ui/Reveal";
 import { hero } from "../../data/content";
@@ -10,14 +9,12 @@ export function Hero() {
     <section className="hero-wash grain">
       <div className="mx-auto grid max-w-content grid-cols-12 items-center gap-12 px-16 pb-section pt-7">
         {/* Copy */}
-        <Reveal className="col-span-7 space-y-7">
-          <Badge variant="accent">{hero.eyebrow}</Badge>
-
-          <h1 className="whitespace-pre-line text-display-2xl text-ink">{hero.headline}</h1>
+        <Reveal className="col-span-8 space-y-6">
+          <h1 className="text-display-xl text-ink">{hero.headline}</h1>
 
           <p className="max-w-xl text-body-lg text-muted">{hero.sub}</p>
 
-          <div className="flex flex-wrap gap-4 pt-1">
+          <div className="flex flex-wrap gap-4">
             <Button variant="primary" size="lg" uppercase>
               {hero.primaryCta}
             </Button>
@@ -26,7 +23,7 @@ export function Hero() {
             </Button>
           </div>
 
-          <ul className="grid max-w-xl grid-cols-2 gap-x-8 gap-y-3 pt-4">
+          <ul className="grid max-w-xl grid-cols-2 gap-x-8 gap-y-3">
             {hero.trust.map((t) => (
               <li key={t} className="flex items-center gap-2 text-body-sm text-body">
                 <Check className="h-4 w-4 shrink-0 text-primary" strokeWidth={2.5} />
@@ -36,12 +33,12 @@ export function Hero() {
           </ul>
         </Reveal>
 
-        {/* Contained, rounded, face-focused portrait */}
-        <Reveal delay={120} className="col-span-5">
+        {/* Decorative portrait — smaller, right-aligned */}
+        <Reveal delay={120} className="col-span-4">
           <ImageSlot
             src={hero.image}
             alt="Glowing, healthy skin"
-            ratio="portrait"
+            ratio="square"
             eager
             rounded="rounded-xl"
             className="border border-hairline shadow-lift"
