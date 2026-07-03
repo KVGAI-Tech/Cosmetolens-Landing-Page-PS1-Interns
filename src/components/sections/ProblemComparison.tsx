@@ -11,10 +11,10 @@ export function ProblemComparison() {
   return (
     <Section surface="soft">
       <Reveal className="mx-auto mb-10 max-w-3xl text-center">
-        <div className="mb-3 text-eyebrow uppercase text-primary tracking-widest">
+        <div className="mb-3 text-eyebrow uppercase text-primary">
           {problem.eyebrow}
         </div>
-        <h2 className="font-serif text-display-xl leading-tight text-ink">
+        <h2 className="text-display-xl leading-tight text-ink">
           {problem.heading}
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-body-lg text-muted">
@@ -25,13 +25,13 @@ export function ProblemComparison() {
       {/* Two separate comparison panels */}
       <div className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl">
         {/* Traditional Rating Mockup */}
-        <Reveal className="bg-canvas rounded-xl p-8 border border-hairline tinted-shadow flex flex-col h-full justify-between">
+        <Reveal className="bg-canvas rounded-xl p-8 border border-hairline shadow-soft flex flex-col h-full justify-between">
           <div className="mb-auto">
             <span className="text-caption-uppercase uppercase text-muted-soft block mb-3 tracking-wider">
               {generic.label}
             </span>
             <div className="flex items-baseline gap-4 mb-4">
-              <span className="font-serif text-display-xl text-ink leading-none">
+              <span className="text-display-xl text-ink leading-none">
                 <CountUp value={generic.rating} decimals={1} />
               </span>
               <div className="flex flex-col">
@@ -63,16 +63,13 @@ export function ProblemComparison() {
           </div>
           <div className="border-t border-hairline pt-4 mt-6">
             <p className="italic text-body-md text-muted leading-relaxed">
-              "{generic.note}"
+              {generic.note}
             </p>
           </div>
         </Reveal>
 
         {/* Cosmetolens Intelligence Mockup */}
-        <Reveal className="bg-surface-card rounded-xl tinted-shadow relative overflow-hidden shimmer-card p-8 flex flex-col h-full justify-between border border-hairline">
-          {/* Shimmer line */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent shimmer-line"></div>
-
+        <Reveal className="bg-surface-card rounded-xl shadow-soft relative overflow-hidden p-8 flex flex-col h-full justify-between border border-hairline">
           <div className="flex justify-between items-center mb-6">
             <h4 className="text-caption-uppercase uppercase text-primary font-semibold tracking-wider">
               {precise.label}
@@ -86,7 +83,7 @@ export function ProblemComparison() {
             {precise.bars.map((bar, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex justify-between items-end">
-                  <span className="font-serif text-display-md text-ink">
+                  <span className="text-display-md text-ink">
                     <CountUp value={bar.score} decimals={1} />
                     <span className="text-body-md text-muted font-normal">/10</span>
                   </span>
