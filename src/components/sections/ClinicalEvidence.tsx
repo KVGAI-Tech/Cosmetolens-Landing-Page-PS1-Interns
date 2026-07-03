@@ -55,7 +55,6 @@ const evidenceItems = [
 ];
 
 export function ClinicalEvidence() {
-  const [showEvidence, setShowEvidence] = useState(false);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
   return (
@@ -66,20 +65,10 @@ export function ClinicalEvidence() {
             Clinical Evidence
           </div>
 
-          <h2 className="font-serif text-display-xl text-ink">{c.heading}</h2>
+          <h2 className="text-display-xl text-ink">{c.heading}</h2>
 
           <p className="text-body-lg text-muted">{c.body}</p>
 
-          <Button
-            variant="primary"
-            size="lg"
-            uppercase
-            onClick={() => setShowEvidence(!showEvidence)}
-          >
-            {showEvidence ? "Hide Evidence" : c.cta}
-          </Button>
-
-          {showEvidence && (
             <div className="mt-8">
               <div className="inline-flex rounded-pill bg-primary-tint px-4 py-2 text-body-sm font-semibold text-primary">
                 Evidence Highlights
@@ -145,7 +134,6 @@ export function ClinicalEvidence() {
                 })}
               </div>
             </div>
-          )}
         </Reveal>
 
         <Reveal delay={150}>
@@ -162,7 +150,7 @@ export function ClinicalEvidence() {
                 VERIFIED
               </div>
 
-              <h3 className="mt-3 font-serif text-display-xl text-primary">
+              <h3 className="mt-3 font-serif text-display-xl text-ink">
                 98%
               </h3>
 
@@ -172,21 +160,21 @@ export function ClinicalEvidence() {
             </div>
 
             <div className="mt-8 space-y-4">
-              <div className="flex items-center gap-3 rounded-lg bg-canvas px-4 py-3">
+              <div className="flex items-center gap-3 rounded-lg border border-hairline bg-canvas px-4 py-3">
                 <BadgeCheck className="h-5 w-5 text-primary" />
                 <span className="text-body-md">
                   Peer Reviewed
                 </span>
               </div>
 
-              <div className="flex items-center gap-3 rounded-lg bg-canvas px-4 py-3">
+              <div className="flex items-center gap-3 rounded-lg border border-hairline bg-canvas px-4 py-3">
                 <BadgeCheck className="h-5 w-5 text-primary" />
                 <span className="text-body-md">
                   Evidence Based
                 </span>
               </div>
 
-              <div className="flex items-center gap-3 rounded-lg bg-canvas px-4 py-3">
+              <div className="flex items-center gap-3 rounded-lg border border-hairline bg-canvas px-4 py-3">
                 <BadgeCheck className="h-5 w-5 text-primary" />
                 <span className="text-body-md">
                   Dermatologist Verified
