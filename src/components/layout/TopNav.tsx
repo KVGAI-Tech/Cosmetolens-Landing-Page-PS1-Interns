@@ -46,8 +46,9 @@ export function TopNav() {
         </div>
 
         {/* Mobile: CTA + hamburger */}
+        {/* FIX: removed size="lg" from mobile CTA — too tall in cramped navbar */}
         <div className="flex items-center gap-2 md:hidden">
-          <Button variant="primary" size="lg">{nav.cta}</Button>
+          <Button variant="primary">{nav.cta}</Button>
           <button
             onClick={() => setMenuOpen((o) => !o)}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-ink transition-colors hover:bg-hairline/40"
@@ -66,14 +67,16 @@ export function TopNav() {
               <a
                 key={link}
                 href="#"
-                className="font-sans text-nav-link font-medium tracking-wide text-muted py-3 transition-colors hover:text-ink border-b border-hairline/50 last:border-b-0"
+                className="border-b border-hairline/50 py-3 font-sans text-nav-link font-medium tracking-wide text-muted transition-colors last:border-b-0 hover:text-ink"
                 onClick={() => setMenuOpen(false)}
               >
                 {link}
               </a>
             ))}
             <div className="pt-4">
-              <Button variant="text" className="w-full justify-start">{nav.login}</Button>
+              <Button variant="text" className="w-full justify-start">
+                {nav.login}
+              </Button>
             </div>
           </Container>
         </div>
