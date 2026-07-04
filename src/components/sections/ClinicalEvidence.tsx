@@ -7,7 +7,6 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Container } from "../ui/Container";
-import { Button } from "../ui/Button";
 import { Reveal } from "../ui/Reveal";
 import { clinicalEvidence as c } from "../../data/content";
 
