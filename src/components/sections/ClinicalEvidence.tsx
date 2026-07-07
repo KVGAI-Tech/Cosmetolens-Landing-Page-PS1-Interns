@@ -62,9 +62,11 @@ export function ClinicalEvidence() {
     <section className="bg-canvas py-section">
       <Container className="grid grid-cols-1 lg:grid-cols-2 items-start gap-16">
         <Reveal className="space-y-6">
+          {/* Eyebrow — consistent with all other sections */}
           <div className="text-title-md font-semibold uppercase tracking-[0.12em] text-primary">
             Clinical Evidence
           </div>
+          
 
           {/* FIX 2: removed redundant font-serif — already global in CSS */}
           <h2 className="text-display-xl text-ink">{c.heading}</h2>
@@ -140,7 +142,7 @@ export function ClinicalEvidence() {
           </Button>
 
         </Reveal>
-
+        {/* Right: verification card */}
         <Reveal delay={150} className="h-full">
           <div className="rounded-xl border border-hairline bg-surface-soft p-10 shadow-soft transition-all duration-300 hover:shadow-lift">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-canvas shadow-md">
