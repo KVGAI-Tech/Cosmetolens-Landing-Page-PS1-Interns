@@ -34,12 +34,12 @@ export function LandingPage() {
           overlay="center"
           contained
           rounded="rounded-xl"
-          height="h-[440px]"
-          position="object-[50%_55%]"
+          height="h-[540px]"
+          position="object-[30%_30%]"
         >
-          <div className="text-caption-uppercase uppercase text-on-primary/80">{lifestyle.eyebrow}</div>
-          <h2 className="mt-4 font-serif text-display-lg text-on-primary">{lifestyle.heading}</h2>
-          <p className="mt-4 text-body-md text-on-primary/85">{lifestyle.sub}</p>
+          <div className="text-caption-uppercase uppercase tracking-widest text-on-primary/70">{lifestyle.eyebrow}</div>
+          <h2 className="mt-6 font-serif text-display-xl text-on-primary">{lifestyle.heading}</h2>
+          <p className="mt-6 text-body-lg text-on-primary/80">{lifestyle.sub}</p>
         </FullBleed>
 
         <HowItWorks />
