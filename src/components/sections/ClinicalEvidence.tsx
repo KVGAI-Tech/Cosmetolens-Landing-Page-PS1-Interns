@@ -58,9 +58,9 @@ export function ClinicalEvidence() {
 
   return (
     <section className="bg-canvas py-section">
-      <Container className="grid grid-cols-1 lg:grid-cols-2 items-center gap-16">
+      <Container className="grid grid-cols-1 lg:grid-cols-2 items-start gap-16">
         <Reveal className="space-y-6">
-          <div className="text-eyebrow uppercase text-primary">
+          <div className="text-title-md font-semibold uppercase tracking-[0.12em] text-primary">
             Clinical Evidence
           </div>
 
@@ -135,7 +135,7 @@ export function ClinicalEvidence() {
             </div>
         </Reveal>
 
-        <Reveal delay={150}>
+        <Reveal delay={150} className="h-full">
           <div className="rounded-xl border border-hairline bg-surface-soft p-10 shadow-soft transition-all duration-300 hover:shadow-lift">
             <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-canvas shadow-md">
               <BadgeCheck

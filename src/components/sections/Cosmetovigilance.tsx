@@ -10,7 +10,7 @@ export function Cosmetovigilance() {
         <Reveal>
           <div className="mb-5 flex items-center gap-3 text-eyebrow uppercase text-accent">
             <ShieldCheck className="h-5 w-5 shrink-0" strokeWidth={2} />
-            <span>Cosmetovigilance</span>
+            <span>Cosmetolens</span>
           </div>
           <h2 className="font-serif text-display-lg leading-tight text-on-dark sm:text-display-xl">
             {c.heading}
