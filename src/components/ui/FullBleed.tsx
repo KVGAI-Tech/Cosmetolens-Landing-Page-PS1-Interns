@@ -34,14 +34,14 @@ export function FullBleed({
         src={src}
         alt={alt}
         loading="lazy"
-        className={cn("absolute inset-0 h-full w-full object-cover", position)}
+        className={cn("absolute inset-0 h-full w-full object-cover brightness-[0.85]", position)}
       />
       {overlay !== "none" && (
         <div
           className={cn(
             "absolute inset-0",
             overlay === "center"
-              ? "bg-ink/40"
+              ? "bg-ink/50"
               : "bg-gradient-to-r from-ink/70 via-ink/35 to-transparent",
           )}
         />
@@ -53,7 +53,10 @@ export function FullBleed({
             contained ? "justify-center px-8" : "mx-auto max-w-content px-16",
           )}
         >
-          <div className={cn("max-w-xl", overlay === "center" && "text-center")}>{children}</div>
+          <div className={cn(
+            "max-w-xl [text-shadow:0_2px_12px_rgba(0,0,0,0.6)]",
+            overlay === "center" && "text-center"
+          )}>{children}</div>
         </div>
       )}
     </div>
