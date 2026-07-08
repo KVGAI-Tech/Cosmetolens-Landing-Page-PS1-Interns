@@ -27,10 +27,10 @@ export function HowItWorks() {
       {/* ── Header (centered, matches editorial campaign feel) ── */}
       <Reveal>
         <div className="mx-auto mb-16 max-w-2xl text-center">
-          <p className="mb-3 text-[10px] uppercase tracking-[0.2em] text-accent">
+          <p className="mb-3 text-eyebrow uppercase text-accent">
             {howItWorks.eyebrow}
           </p>
-          <h2 className="text-display-xl text-on-dark leading-tight">
+          <h2 className="text-display-lg md:text-display-xl text-on-dark leading-tight">
             {howItWorks.heading}
           </h2>
           <p className="mt-5 text-body-md text-on-dark-soft">
@@ -47,18 +47,18 @@ export function HowItWorks() {
           className="absolute left-[16.5%] right-[16.5%] top-9 hidden h-px bg-white/10 md:block"
         />
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8">
+        <div className="grid grid-cols-1 items-stretch gap-10 md:grid-cols-3 md:gap-8">
           {howItWorks.steps.map((step, i) => (
-            <Reveal key={step.no} delay={i * 120}>
-              <div className="group flex flex-col items-center text-center">
+            <Reveal key={step.no} delay={i * 120} className="h-full">
+              <div className="group flex h-full flex-col items-center rounded-lg border border-hairline bg-surface-dark-elevated p-8 text-center">
 
                 {/* Icon badge — glow ring kept, but subtle, no ambient page blur */}
-                <div className="relative z-10 mb-6 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-white/15 bg-surface-dark-soft transition-all duration-300 group-hover:border-accent/40 group-hover:shadow-[0_0_20px_rgba(192,98,63,0.18)]">
+                <div className="relative z-10 mb-6 flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full border border-white/15 bg-surface-dark-soft transition-all duration-300 group-hover:border-accent/40 group-hover:shadow-soft">
                   {getStepIcon(step.icon)}
                 </div>
 
                 {/* Step label */}
-                <span className="mb-2 text-[10px] uppercase tracking-[0.2em] text-on-dark-soft">
+                <span className="mb-2 text-caption-uppercase uppercase text-on-dark-soft">
                   Step {step.no}
                 </span>
 
@@ -66,7 +66,7 @@ export function HowItWorks() {
                 <h3 className="text-title-lg text-on-dark leading-snug">
                   {step.title}
                 </h3>
-                <p className="mt-3 max-w-xs text-body-md text-on-dark-soft leading-relaxed">
+                <p className="mt-3 text-body-md text-on-dark-soft leading-relaxed">
                   {step.body}
                 </p>
               </div>
