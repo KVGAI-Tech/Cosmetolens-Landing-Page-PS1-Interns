@@ -32,7 +32,7 @@ export function TopNav() {
             <a
               key={link}
               href="#"
-              className="font-sans text-nav-link font-medium tracking-wide text-muted transition-colors hover:text-ink"
+              className="font-serif text-base font-medium tracking-wide text-muted transition-colors hover:text-ink hover:underline hover:underline-offset-4"
             >
               {link}
             </a>
@@ -40,15 +40,14 @@ export function TopNav() {
         </div>
 
         {/* Desktop right actions */}
-        <div className="hidden items-center gap-3 md:flex">
-          <Button variant="text">{nav.login}</Button>
-          <Button variant="primary">{nav.cta}</Button>
+        <div className="hidden items-center gap-4 md:flex">
+          <Button variant="text" size="md">{nav.login}</Button>
+          <Button variant="primary" size="md">{nav.cta}</Button>
         </div>
 
         {/* Mobile: CTA + hamburger */}
-        {/* FIX: removed size="lg" from mobile CTA — too tall in cramped navbar */}
         <div className="flex items-center gap-2 md:hidden">
-          <Button variant="primary">{nav.cta}</Button>
+          <Button variant="primary" size="md">{nav.cta}</Button>
           <button
             onClick={() => setMenuOpen((o) => !o)}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-ink transition-colors hover:bg-hairline/40"
@@ -67,14 +66,14 @@ export function TopNav() {
               <a
                 key={link}
                 href="#"
-                className="border-b border-hairline/50 py-3 font-sans text-nav-link font-medium tracking-wide text-muted transition-colors last:border-b-0 hover:text-ink"
+                className="border-b border-hairline/50 py-3 font-serif text-base font-medium tracking-wide text-muted transition-colors last:border-b-0 hover:text-ink hover:underline hover:underline-offset-4"
                 onClick={() => setMenuOpen(false)}
               >
                 {link}
               </a>
             ))}
             <div className="pt-4">
-              <Button variant="text" className="w-full justify-start">
+              <Button variant="text" size="md" className="w-full justify-start text-base">
                 {nav.login}
               </Button>
             </div>
