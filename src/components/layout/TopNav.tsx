@@ -41,8 +41,8 @@ export function TopNav() {
 
         {/* Desktop right actions */}
         <div className="hidden items-center gap-4 md:flex">
-          <Button variant="text" size="md">{nav.login}</Button>
-          <Button variant="primary" size="md">{nav.cta}</Button>
+          <a href="#" className="font-sans text-button font-semibold uppercase tracking-wider text-ink transition-colors hover:opacity-70">{nav.login}</a>
+          <Button variant="primary" size="md" uppercase>{nav.cta}</Button>
         </div>
 
         {/* Mobile: CTA + hamburger */}
@@ -72,10 +72,10 @@ export function TopNav() {
                 {link}
               </a>
             ))}
-            <div className="pt-4">
-              <Button variant="text" size="md" className="w-full justify-start text-base">
+            <div className="pt-4 flex justify-center">
+              <a href="#" className="font-sans text-button font-semibold uppercase tracking-wider text-ink transition-colors hover:opacity-70">
                 {nav.login}
-              </Button>
+              </a>
             </div>
           </Container>
         </div>

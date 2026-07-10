@@ -32,16 +32,16 @@ export function Hero() {
             <Button variant="primary" size="lg" uppercase>
               {hero.primaryCta}
             </Button>
-            <Button variant="secondary" size="lg" uppercase>
+            <Button variant="primary" size="lg" uppercase>
               {hero.secondaryCta}
             </Button>
           </div>
 
-          <ul className="flex flex-col items-center gap-3 md:grid md:max-w-xl md:grid-cols-2 md:gap-x-8 md:gap-y-3 md:items-start">
+          <ul className="flex flex-col items-center gap-4 md:grid md:max-w-lg md:grid-cols-2 md:gap-x-6 md:gap-y-5 md:items-start">
             {hero.trust.map((t) => (
-              <li key={t} className="flex items-center gap-2 text-body-sm text-body">
-                <Check className="h-4 w-4 shrink-0 text-primary" strokeWidth={2.5} />
-                {t}
+              <li key={t} className="flex items-start gap-3 font-serif text-body-md text-body">
+                <Check className="mt-[3px] h-4 w-4 shrink-0 text-primary" strokeWidth={2.5} />
+                <span>{t}</span>
               </li>
             ))}
           </ul>

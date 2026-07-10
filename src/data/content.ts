@@ -38,6 +38,7 @@ export const hero = {
 
 /** Centralized image paths for the editorial / full-bleed bands. */
 export const media = {
+  skinDiversity: "/images/skin-diversity.png",
   heroPortrait: "/images/face-profile.jpg",
   spaFacial: "/images/spa-facial.jpg", // woman + clay mask facial (lifestyle band)
   serumHands: "/images/serum-hands.jpg", // hands + serum dropper
