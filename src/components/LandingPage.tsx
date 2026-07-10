@@ -29,13 +29,13 @@ export function LandingPage() {
 
         {/* Editorial lifestyle band — contained + rounded, face in focus, with a heading */}
         <FullBleed
-          src={media.spaFacial}
-          alt="A considered skincare ritual"
+          src={media.skinDiversity}
+          alt="Skincare for every skin"
           overlay="center"
           contained
           rounded="rounded-xl"
           height="h-[540px]"
-          position="object-[30%_30%]"
+          position="object-center"
         >
           <div className="text-caption-uppercase uppercase tracking-widest text-on-primary/70">{lifestyle.eyebrow}</div>
           <h2 className="mt-6 font-serif text-display-xl text-on-primary">{lifestyle.heading}</h2>
