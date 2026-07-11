@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import {
   Droplets,
   Zap,
@@ -10,7 +11,7 @@ import {
   ScanLine,
 } from "lucide-react";
 import type { LucideProps } from "lucide-react";
-import type { ComponentType } from "react";
+import type { ComponentType, CSSProperties } from "react";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import { ImageSlot } from "../ui/ImageSlot";
@@ -68,62 +69,134 @@ const MARKER_META: Record<string, MarkerMeta> = {
   },
 };
 
-/** A single marker row with an absolutely-positioned, layout-safe hover popover. */
+/** Tooltip width in px — must match the w-72 class (18rem = 288px). */
+const TOOLTIP_W = 288;
+const GAP = 16; // gap between text content edge and tooltip
+
+/**
+ * Single marker row.
+ *
+ * The tooltip is rendered into document.body via createPortal with
+ * position:fixed, so it:
+ *   - Never pushes surrounding content or adds a scrollbar
+ *   - Floats above all other elements (z-index 9999)
+ *   - Anchors to the right edge of the TEXT (not the full row width)
+ *     so it always appears to the right of the label on any screen size
+ */
 function MarkerItem({ marker }: { marker: string }) {
   const [open, setOpen] = useState(false);
+  const [style, setStyle] = useState<CSSProperties>({});
+  const rowRef = useRef<HTMLLIElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
   const meta = MARKER_META[marker];
-  if (!meta) return null;
   const Icon = meta.icon;
 
-  return (
-    <li
-      className="group relative flex items-center gap-4 py-3.5"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      onFocus={() => setOpen(true)}
-      onBlur={() => setOpen(false)}
-    >
-      {/* Icon bubble */}
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-tint transition-colors duration-200 group-hover:bg-primary/20">
-        <Icon className="h-4 w-4 text-primary" strokeWidth={1.75} />
-      </div>
+  const calcPosition = useCallback(() => {
+    if (!meta) return null;
+    if (!rowRef.current || !textRef.current) return;
+    const row = rowRef.current.getBoundingClientRect();
+    const txt = textRef.current.getBoundingClientRect();
+    const vw = window.innerWidth;
 
-      {/* Label + short description */}
-      <div className="transition-transform duration-200 group-hover:translate-x-0.5">
-        <div className="text-title-md text-ink">{marker}</div>
-        <p className="mt-0.5 text-body-sm leading-5 text-muted">
-          {meta.description}
-        </p>
-      </div>
+    // Anchor to the RIGHT edge of the label text, not the row's right edge.
+    // The <li> spans the full column width, but the text content is much
+    // narrower — so there's always empty space to its right to float into.
+    const rawLeft = txt.right + GAP;
+
+    // Clamp so the tooltip never overflows the viewport (position:fixed means
+    // no scrollbar is ever added regardless).
+    const left = Math.min(rawLeft, vw - TOOLTIP_W - 8);
+
+    // If even the clamped position overlaps the text, fall back to below.
+    if (left + TOOLTIP_W < txt.left || vw < 480) {
+      // Very small screen — show below the row
+      setStyle({
+        position: "fixed",
+        left: Math.max(8, Math.min(row.left, vw - TOOLTIP_W - 8)),
+        top: row.bottom + GAP,
+        width: Math.min(TOOLTIP_W, vw - 16),
+      });
+    } else {
+      // Right of the text content, vertically centred on the row
+      setStyle({
+        position: "fixed",
+        left,
+        top: row.top + row.height / 2,
+        transform: "translateY(-50%)",
+        width: Math.min(TOOLTIP_W, vw - left - 8),
+      });
+    }
+  }, []);
+
+  const handleOpen = () => {
+    calcPosition();
+    setOpen(true);
+  };
+
+  const handleClose = () => setOpen(false);
+
+  return (
+    <>
+      {/* ── Row ── */}
+      <li
+        ref={rowRef}
+        className="group relative flex items-center gap-4 py-3.5 cursor-default"
+        onMouseEnter={handleOpen}
+        onMouseLeave={handleClose}
+        onFocus={handleOpen}
+        onBlur={handleClose}
+      >
+        {/* Icon bubble */}
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary-tint transition-colors duration-200 group-hover:bg-primary/20">
+          <Icon className="h-4 w-4 text-primary" strokeWidth={1.75} />
+        </div>
+
+        {/* Label + short description — textRef marks where the content ends
+            so the tooltip can anchor to the right of this, not the row edge */}
+        <div
+          ref={textRef}
+          className="transition-transform duration-200 group-hover:translate-x-0.5"
+        >
+          <div className="text-title-md text-ink">{marker}</div>
+          <p className="mt-0.5 text-body-sm leading-5 text-muted">
+            {meta.description}
+          </p>
+        </div>
+      </li>
 
       {/*
-        Popover — absolutely positioned so it NEVER shifts surrounding content.
-        Hidden: opacity-0, translate-y-1, pointer-events-none
-        Visible: opacity-100, translate-y-0, pointer-events-auto
+        ── Portal tooltip ──
+        Rendered directly into <body> with position:fixed so it is completely
+        decoupled from the document layout. No overflow, no scrollbar, ever.
       */}
-      <div
-        role="tooltip"
-        aria-hidden={!open}
-        className={[
-          "absolute left-0 top-[calc(100%+4px)] z-50 w-72 max-w-[calc(100vw-2rem)]",
-          "rounded-xl border border-hairline/60 bg-canvas/90 px-4 py-3.5 shadow-lift backdrop-blur-md",
-          "transition-all duration-200 ease-out",
-          open
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-1 opacity-0",
-        ].join(" ")}
-      >
-        <div className="mb-1.5 flex items-center gap-2">
-          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-tint">
-            <Icon className="h-3.5 w-3.5 text-primary" strokeWidth={1.75} />
-          </div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-            {marker}
-          </span>
-        </div>
-        <p className="text-body-sm leading-6 text-muted">{meta.detail}</p>
-      </div>
-    </li>
+      {typeof document !== "undefined" &&
+        createPortal(
+          <div
+            role="tooltip"
+            aria-hidden={!open}
+            style={style}
+            className={[
+              "z-[9999] rounded-xl border border-hairline/60 bg-canvas/95",
+              "px-4 py-3.5 shadow-lift backdrop-blur-md",
+              "transition-all duration-200 ease-out",
+              open
+                ? "pointer-events-auto translate-x-0 opacity-100"
+                : "pointer-events-none -translate-x-2 opacity-0",
+            ].join(" ")}
+          >
+            <div className="mb-1.5 flex items-center gap-2">
+              <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary-tint">
+                <Icon className="h-3.5 w-3.5 text-primary" strokeWidth={1.75} />
+              </div>
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                {marker}
+              </span>
+            </div>
+            <p className="text-body-sm leading-6 text-muted">{meta.detail}</p>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }
 
@@ -173,7 +246,7 @@ export function SkinIntelligence() {
           </div>
         </Reveal>
 
-        {/* Right: text + feature cards */}
+        {/* Right: text + feature list */}
         <Reveal delay={120} className="space-y-8">
           <div>
             <div className="mb-3 text-eyebrow uppercase text-primary">
@@ -187,7 +260,7 @@ export function SkinIntelligence() {
 
           <p className="max-w-xl text-body-lg leading-8 text-muted">{s.body}</p>
 
-          {/* Feature list — each item manages its own hover popover */}
+          {/* Feature list — tooltips are portalled, so overflow is irrelevant */}
           <ul className="mt-8 divide-y divide-hairline">
             {s.markers.map((marker) => (
               <MarkerItem key={marker} marker={marker} />
