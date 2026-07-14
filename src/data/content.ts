@@ -109,7 +109,7 @@ export const howItWorks = {
     },
     {
       no: "03",
-      title: "Unlock Personalized Intelligence",
+      title: "Personalized Intelligence",
       body: "Receive precise, data-driven recommendations that match your Skin ID perfectly. Eliminate guesswork and shop with absolute confidence.",
       icon: "insights" as const,
     },
